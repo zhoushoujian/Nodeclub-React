@@ -44,14 +44,14 @@ exports.formatMongooseObject = (param) => {
 
 exports.renderAndSend = async (req, res, pagePath, queryParams) => {
 		try {
-			logger.info("data script size: ", res.data && JSON.stringify(res.data).length)
+			logger.info("data script size: ", res.data ? JSON.stringify(res.data).length : 0)
 			const time = Date.now();
 			logger.info('======> Generating View with Next');
 			const html = await res.client.render(req, res, pagePath, queryParams);
 			logger.info('======> Time Taken by Next: ', Date.now() - time);
 			return res.send(html);
 		} catch (e) {
-			logger.error('======> renderToHTML Error', e);
+			logger.error('======> renderToHTML Error', e.stack || e.toString());
 			res.send("error happened")
 		}
 }

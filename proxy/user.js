@@ -53,6 +53,7 @@ exports.getUserById = function (id, callback) {
 		const modelResult = results
 		results = tools.formatMongooseObject(results)
 		results.modelUser = modelResult
+		results.save = results.modelUser.save
 		return callback(err, results)
 	});
 };

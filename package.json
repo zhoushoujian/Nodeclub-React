@@ -85,9 +85,6 @@
   "scripts": {
     "start": "node app",
     "test": "make test",
-    "snyk-protect": "snyk protect",
-    "prepare": "npm run snyk-protect",
     "buildNext": "cd views && rm -rf .next/* && next build"
-  },
-  "snyk": true
+  }
 }

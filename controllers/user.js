@@ -91,8 +91,9 @@ exports.showSetting = function (req, res, next) {
     if (req.query.save === 'success') {
       user.success = '保存成功。';
     }
-    user.error = null;
-    return res.render('user/setting', user);
+		user.error = null;
+		res.data = { user }
+		return tools.renderAndSend(req, res, '/userSetting', req.query)
   });
 };
 
@@ -132,12 +133,12 @@ exports.setting = function (req, res, next) {
       user.url = url;
       user.location = location;
       user.signature = signature;
-      user.weibo = weibo;
-      user.save(function (err) {
+			user.weibo = weibo;
+      user.modelUser.save(function (err) {
         if (err) {
           return next(err);
         }
-        req.session.user = user.toObject({virtual: true});
+        req.session.user = user.modelUser.toObject({virtual: true});
         return res.redirect('/setting?save=success');
       });
     }));
@@ -157,7 +158,7 @@ exports.setting = function (req, res, next) {
 
         tools.bhash(new_pass, ep.done(function (passhash) {
           user.pass = passhash;
-          user.save(function (err) {
+          user.modelUser.save(function (err) {
             if (err) {
               return next(err);
             }
@@ -180,7 +181,7 @@ exports.toggleStar = function (req, res, next) {
       return next(new Error('user is not exists'));
     }
     user.is_star = !user.is_star;
-    user.save(function (err) {
+    user.modelUser.save(function (err) {
       if (err) {
         return next(err);
       }
@@ -347,11 +348,11 @@ exports.block = function (req, res, next) {
           res.json({status: 'success'});
         });
       user.is_block = true;
-      user.save(ep.done('block_user'));
+      user.modelUser.save(ep.done('block_user'));
 
     } else if (action === 'cancel_block') {
       user.is_block = false;
-      user.save(ep.done(function () {
+      user.modelUser.save(ep.done(function () {
 
         res.json({status: 'success'});
       }));
@@ -389,10 +390,10 @@ exports.refreshToken = function (req, res, next) {
   var ep = EventProxy.create();
   ep.fail(next);
 
-   User.getUserById(user_id, ep.done(function (user) {
-    user.accessToken = uuid.v4();
-    user.save(ep.done(function () {
+	User.getUserById(user_id, ep.done(function (user) {
+		user.accessToken = uuid.v4();
+		user.modelUser.save(ep.done(function () {
       res.json({status: 'success', accessToken: user.accessToken});
-    }));
+    }))
   }));
 };

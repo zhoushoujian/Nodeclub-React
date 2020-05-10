@@ -3,7 +3,7 @@ import React from 'react';
 import config from "../../config"
 
 const Meta = (props) => {
-    const { noIndex=false, topic } = props;
+    const { noIndex=false, topic, pageTitle } = props;
 
     return (
       <Head>

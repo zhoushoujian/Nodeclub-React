@@ -89,7 +89,7 @@ function collect(req, res, next) {
 				}
 				user = tools.formatMongooseObject(user)
         user.collect_topic_count += 1;
-        user.save();
+        user.modelUser.save();
       });
 
       topic.collect_count += 1;
@@ -130,7 +130,7 @@ function de_collect(req, res, next) {
 				}
 				user = tools.formatMongooseObject(user)
         user.collect_topic_count -= 1;
-        user.save();
+        user.modelUser.save();
       });
 
       topic.collect_count -= 1;

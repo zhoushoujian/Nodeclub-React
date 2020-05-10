@@ -183,7 +183,7 @@ exports.activeAccount = function (req, res, next) {
     if (!user) {
       return next(new Error('[ACTIVE_ACCOUNT] no such user: ' + name));
 		}
-		user = tools.formatMongooseObject(user)
+		// user = tools.formatMongooseObject(user)
     var passhash = user.pass;
     if (!user || utility.md5(user.email + passhash + config.session_secret) !== key) {
       return res.render('notify/notify', {error: '信息有误，帐号无法被激活。'});
@@ -222,7 +222,7 @@ exports.updateSearchPass = function (req, res, next) {
     }
     user.retrieve_key = retrieveKey;
     user.retrieve_time = retrieveTime;
-    user.save(function (err) {
+		user.modelUser.save(function (err) {
       if (err) {
         return next(err);
       }

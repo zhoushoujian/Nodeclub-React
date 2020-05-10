@@ -41,9 +41,10 @@ var renderMiddleware = require('./middlewares/render');
 var logger = require('./common/logger');
 var helmet = require('helmet');
 var bytes = require('bytes')
-const uuid = require('node-uuid');
-const client = require('./next')
-const app = express();
+var uuid = require('node-uuid');
+var client = require('./next')
+var app = express();
+
 
 const handle = client.getRequestHandler()
 client.prepare().then(() => {
@@ -63,7 +64,7 @@ client.prepare().then(() => {
   }
 
   var urlinfo = require('url').parse(config.host);
-  config.hostname = urlinfo.hostname || config.host;
+	config.hostname = urlinfo.hostname || config.host;
 
   // configuration in all env
   app.set('views', path.join(__dirname, 'views'));
@@ -201,7 +202,15 @@ client.prepare().then(() => {
       logger.info('You can debug your app with http://' + config.hostname + ':' + config.port);
       logger.info('');
     });
-  }
+	}
+
+	process.on("uncaughtException", (err) => {
+	  logger.error("uncaughtException", err.stack || err.toString());
+	})
+
+	process.on('unhandledRejection', (error) => {
+		logger.error('unhandledRejection', error);
+	});
 
 })
 module.exports = app;

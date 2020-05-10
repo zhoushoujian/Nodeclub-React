@@ -2,7 +2,7 @@ import React, { useRef } from 'react'
 import config from "../../config"
 
 const Header = (props) => {
-	const { locals: { current_user } } = props
+	const current_user = props.locals && props.locals.current_user
 	const inputSearchRef = useRef()
 
 	const handleKeyDown = (e) => {

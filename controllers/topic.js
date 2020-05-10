@@ -176,7 +176,7 @@ exports.put = function (req, res, next) {
     User.getUserById(req.session.user._id, proxy.done(function (user) {
       user.score += 5;
       user.topic_count += 1;
-      user.save();
+			user.modelUser.save();
       req.session.user = user;
       proxy.emit('score_saved');
     }));
@@ -410,7 +410,7 @@ exports.collect = function (req, res, next) {
           return next(err);
         }
         user.collect_topic_count += 1;
-        user.save();
+        user.modelUser.save();
       });
 
       req.session.user.collect_topic_count += 1;
@@ -443,7 +443,7 @@ exports.de_collect = function (req, res, next) {
         }
         user.collect_topic_count -= 1;
         req.session.user = user;
-        user.save();
+        user.modelUser.save();
       });
 
       topic.collect_count -= 1;

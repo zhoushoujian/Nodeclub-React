@@ -1,21 +1,22 @@
 var multiline = require('multiline');
+var { renderAndSend } = require("../common/tools")
 // static page
 // About
 exports.about = function (req, res, next) {
-  res.render('static/about', {
-    pageTitle: '关于我们'
-  });
+	res.data = { pageTitle: '关于我们' }
+	return renderAndSend(req, res, '/staticAbout', req.query)
 };
 
 // FAQ
 exports.faq = function (req, res, next) {
-  res.render('static/faq');
+	return renderAndSend(req, res, '/staticFaq', req.query)
 };
 
 exports.getstart = function (req, res) {
-  res.render('static/getstart', {
-    pageTitle: 'Node.js 新手入门'
-  });
+	res.data = {
+		pageTitle: 'Node.js 新手入门'
+	}
+	return renderAndSend(req, res, '/staticGetStart', req.query)
 };
 
 
@@ -33,5 +34,5 @@ exports.robots = function (req, res, next) {
 };
 
 exports.api = function (req, res, next) {
-  res.render('static/api');
+	return renderAndSend(req, res, '/staticApi', req.query)
 };

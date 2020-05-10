@@ -174,7 +174,7 @@ var create = function (req, res, next) {
 			user = tools.formatMongooseObject(user)
       user.score += 5;
       user.topic_count += 1;
-      user.save();
+      user.modelUser.save();
       req.user = user;
       proxy.emit('score_saved');
     }));

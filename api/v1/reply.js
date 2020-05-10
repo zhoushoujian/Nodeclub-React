@@ -59,7 +59,7 @@ var create = function (req, res, next) {
 			user = tools.formatMongooseObject(user)
       user.score += 5;
       user.reply_count += 1;
-      user.save();
+      user.modelUser.save()
       ep.emit('score_saved');
     }));
   });
