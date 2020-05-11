@@ -222,7 +222,7 @@ exports.updateSearchPass = function (req, res, next) {
     }
     user.retrieve_key = retrieveKey;
     user.retrieve_time = retrieveTime;
-		user.modelUser.save(function (err) {
+		user.save(function (err) {
       if (err) {
         return next(err);
       }

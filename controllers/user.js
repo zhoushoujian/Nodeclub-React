@@ -134,11 +134,11 @@ exports.setting = function (req, res, next) {
       user.location = location;
       user.signature = signature;
 			user.weibo = weibo;
-      user.modelUser.save(function (err) {
+      user.save(function (err) {
         if (err) {
           return next(err);
         }
-        req.session.user = user.modelUser.toObject({virtual: true});
+        req.session.user = user.toObject({virtual: true});
         return res.redirect('/setting?save=success');
       });
     }));
@@ -158,7 +158,7 @@ exports.setting = function (req, res, next) {
 
         tools.bhash(new_pass, ep.done(function (passhash) {
           user.pass = passhash;
-          user.modelUser.save(function (err) {
+          user.save(function (err) {
             if (err) {
               return next(err);
             }
@@ -181,7 +181,7 @@ exports.toggleStar = function (req, res, next) {
       return next(new Error('user is not exists'));
     }
     user.is_star = !user.is_star;
-    user.modelUser.save(function (err) {
+    user.save(function (err) {
       if (err) {
         return next(err);
       }
@@ -348,11 +348,11 @@ exports.block = function (req, res, next) {
           res.json({status: 'success'});
         });
       user.is_block = true;
-      user.modelUser.save(ep.done('block_user'));
+      user.save(ep.done('block_user'));
 
     } else if (action === 'cancel_block') {
       user.is_block = false;
-      user.modelUser.save(ep.done(function () {
+      user.save(ep.done(function () {
 
         res.json({status: 'success'});
       }));
@@ -392,7 +392,7 @@ exports.refreshToken = function (req, res, next) {
 
 	User.getUserById(user_id, ep.done(function (user) {
 		user.accessToken = uuid.v4();
-		user.modelUser.save(ep.done(function () {
+		user.save(ep.done(function () {
       res.json({status: 'success', accessToken: user.accessToken});
     }))
   }));
