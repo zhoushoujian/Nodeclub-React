@@ -18,7 +18,7 @@ class MyDocument extends Document {
           <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
           <link rel="icon" type="image/x-icon" href="/static/img/favicon.ico" />
           <meta name="referrer" content="always" />
-          { config.site_headers && config.site_headers.map((item, index) => <meta name="author" key={index} content={item} />) }
+          { config.site_headers_react && config.site_headers_react.map((item, index) => <meta name="author" key={index} content={item} />) }
           <link title="RSS" type="application/rss+xml" rel="alternate" href="/rss"/>
 					{ config.site_icon && <link rel="icon" href={config.site_icon} type="image/x-icon"/> }
 					<link rel="stylesheet" href="/public/libs/editor/editor.css" media="all"></link>

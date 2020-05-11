@@ -6,7 +6,7 @@ import "../theme/less/index.less"
 const UserSetting = (props) => {
 	console.log("UserSetting props", props)
 	const { data: { user={} }, locals: { current_user } } = props
-	const { accessToken, error, success, loginname, email, url, location, weibo, signature, csrf, } = user
+	const { accessToken, error, success, loginname, email, url, location, weibo, signature, csrf, githubUsername } = user
 
 	useEffect(() => {
 		$(function() {

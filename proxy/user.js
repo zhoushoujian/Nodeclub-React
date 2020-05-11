@@ -17,7 +17,7 @@ exports.getUsersByNames = function (names, callback) {
     return callback(null, []);
   }
   User.find({ loginname: { $in: names } }, (err, results) => {
-		results = tools.formatMongooseObject(results)
+		// results = tools.formatMongooseObject(results)
 		return callback(err, results)
 	});
 };
@@ -32,7 +32,7 @@ exports.getUsersByNames = function (names, callback) {
  */
 exports.getUserByLoginName = function (loginName, callback) {
   User.findOne({'loginname': new RegExp('^'+loginName+'$', "i")}, (err, results) => {
-		results = tools.formatMongooseObject(results)
+		// results = tools.formatMongooseObject(results)
 		return callback(err, results)
 	});
 };
@@ -50,10 +50,12 @@ exports.getUserById = function (id, callback) {
     return callback();
   }
   User.findOne({_id: id}, (err, results) => {
-		const modelResult = results
-		results = tools.formatMongooseObject(results)
-		results.modelUser = modelResult
-		results.save = results.modelUser.save
+		if(results){
+			const modelResult = results
+			// results = tools.formatMongooseObject(results)
+			results.modelUser = modelResult
+			results.save = results.modelUser.save
+		}
 		return callback(err, results)
 	});
 };
@@ -68,7 +70,7 @@ exports.getUserById = function (id, callback) {
  */
 exports.getUserByMail = function (email, callback) {
   User.findOne({email: email}, (err, results) => {
-		results = tools.formatMongooseObject(results)
+		// results = tools.formatMongooseObject(results)
 		return callback(err, results)
 	});
 };
@@ -83,7 +85,7 @@ exports.getUserByMail = function (email, callback) {
  */
 exports.getUsersByIds = function (ids, callback) {
   User.find({'_id': {'$in': ids}}, (err, results) => {
-		results = tools.formatMongooseObject(results)
+		// results = tools.formatMongooseObject(results)
 		return callback(err, results)
 	});
 };
@@ -99,7 +101,7 @@ exports.getUsersByIds = function (ids, callback) {
  */
 exports.getUsersByQuery = function (query, opt, callback) {
   User.find(query, '', opt, (err, results) => {
-		results = tools.formatMongooseObject(results)
+		// results = tools.formatMongooseObject(results)
 		return callback(err, results)
 	});
 };
@@ -115,7 +117,7 @@ exports.getUsersByQuery = function (query, opt, callback) {
  */
 exports.getUserByNameAndKey = function (loginname, key, callback) {
   User.findOne({loginname: loginname, retrieve_key: key}, (err, results) => {
-		results = tools.formatMongooseObject(results)
+		// results = tools.formatMongooseObject(results)
 		return callback(err, results)
 	});
 };

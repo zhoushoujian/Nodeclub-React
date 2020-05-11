@@ -75,7 +75,7 @@ exports.sendMessageToMentionUsers = function (text, topicId, authorId, reply_id,
     if (err || !users) {
       return callback(err);
 		}
-		users = tools.formatMongooseObject(users)
+		// users = tools.formatMongooseObject(users)
     var ep = new EventProxy();
     ep.fail(callback);
 

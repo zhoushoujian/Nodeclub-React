@@ -17,7 +17,7 @@ function list(req, res, next) {
       res.status(404);
       return res.send({success: false, error_msg: '用户不存在'});
 		}
-		user = tools.formatMongooseObject(user)
+		// user = tools.formatMongooseObject(user)
 
     // api 返回 100 条就好了
     TopicCollectProxy.getTopicCollectsByUserId(user._id, {limit: 100}, ep.done('collected_topics'));
@@ -87,9 +87,9 @@ function collect(req, res, next) {
         if (err) {
           return next(err);
 				}
-				user = tools.formatMongooseObject(user)
+				// user = tools.formatMongooseObject(user)
         user.collect_topic_count += 1;
-        user.modelUser.save();
+        user.save();
       });
 
       topic.collect_count += 1;
@@ -128,9 +128,9 @@ function de_collect(req, res, next) {
         if (err) {
           return next(err);
 				}
-				user = tools.formatMongooseObject(user)
+				// user = tools.formatMongooseObject(user)
         user.collect_topic_count -= 1;
-        user.modelUser.save();
+        user.save();
       });
 
       topic.collect_count -= 1;

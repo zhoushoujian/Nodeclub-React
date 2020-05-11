@@ -35,7 +35,7 @@ exports.getTopicById = function (id, callback) {
       proxy.emit('last_reply', null);
       return;
 		}
-		topic = tools.formatMongooseObject(topic)
+		// topic = tools.formatMongooseObject(topic)
     proxy.emit('topic', topic);
 
     User.getUserById(topic.author_id, proxy.done('author'));
@@ -77,7 +77,7 @@ exports.getTopicsByQuery = function (query, opt, callback) {
     if (err) {
       return callback(err);
 		}
-		topics = tools.formatMongooseObject(topics)
+		// topics = tools.formatMongooseObject(topics)
     if (topics.length === 0) {
       return callback(null, []);
     }
@@ -113,7 +113,7 @@ exports.getTopicsByQuery = function (query, opt, callback) {
 // for sitemap
 exports.getLimit5w = function (callback) {
   Topic.find({deleted: false}, '_id', {limit: 50000, sort: '-create_at'}, (err, results) => {
-		results = tools.formatMongooseObject(results)
+		// results = tools.formatMongooseObject(results)
 		return callback(err, results)
 	});
 };
@@ -135,8 +135,8 @@ exports.getFullTopic = function (id, callback) {
   proxy
     .assign(events, function (topic, author, replies) {
 			// topic = tools.formatMongooseObject(topic)
-			author = tools.formatMongooseObject(author)
-			replies = tools.formatMongooseObject(replies)
+			// author = tools.formatMongooseObject(author)
+			// replies = tools.formatMongooseObject(replies)
       callback(null, '', topic, author, replies);
     })
     .fail(callback);
@@ -190,7 +190,7 @@ exports.updateLastReply = function (topicId, replyId, callback) {
  */
 exports.getTopic = function (id, callback) {
   Topic.findOne({_id: id}, (err, results) => {
-		results = tools.formatMongooseObject(results)
+		// results = tools.formatMongooseObject(results)
 		return callback(err, results)
 	});
 };
@@ -209,7 +209,7 @@ exports.reduceCount = function (id, callback) {
     if (!topic) {
       return callback(new Error('该主题不存在'));
 		}
-		topic = tools.formatMongooseObject(topic)
+		// topic = tools.formatMongooseObject(topic)
     topic.reply_count -= 1;
 
     Reply.getLastReplyByTopId(id, function (err, reply) {

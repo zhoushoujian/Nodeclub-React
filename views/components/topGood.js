@@ -1,9 +1,17 @@
 import React, { Fragment } from 'react';
-import { tabName } from "../../common/render_helper"
+import config from "../../config"
+
+function tabName(tab){
+	var pair = _.find(config.tabs, function (pair) {
+    return pair[0] === tab;
+  });
+  if (pair) {
+    return pair[1];
+  }
+}
 
 const TopGood = (props) => {
 	const { topic, tab } = props
-
   return (
 		<Fragment>
 			{

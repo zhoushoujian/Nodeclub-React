@@ -44,8 +44,8 @@ var create = function (req, res, next) {
   });
 
   ep.all('topic', 'topic_author', function (topic, topicAuthor) {
-		topic = tools.formatMongooseObject(topic)
-		topicAuthor = tools.formatMongooseObject(topicAuthor)
+		// topic = tools.formatMongooseObject(topic)
+		// topicAuthor = tools.formatMongooseObject(topicAuthor)
     Reply.newAndSave(content, topic_id, req.user.id, reply_id, ep.done(function (reply) {
       Topic.updateLastReply(topic_id, reply._id, ep.done(function () {
         ep.emit('reply_saved', reply);
@@ -56,10 +56,10 @@ var create = function (req, res, next) {
     }));
 
     User.getUserById(req.user.id, ep.done(function (user) {
-			user = tools.formatMongooseObject(user)
+			// user = tools.formatMongooseObject(user)
       user.score += 5;
       user.reply_count += 1;
-      user.modelUser.save()
+      user.save()
       ep.emit('score_saved');
     }));
   });

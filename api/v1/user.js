@@ -17,7 +17,7 @@ var show = function (req, res, next) {
       res.status(404);
       return res.send({success: false, error_msg: '用户不存在'});
 		}
-		user = tools.formatMongooseObject(user)
+		// user = tools.formatMongooseObject(user)
     var query = {author_id: user._id};
     var opt = {limit: 15, sort: '-create_at'};
     TopicProxy.getTopicsByQuery(query, opt, ep.done('recent_topics'));

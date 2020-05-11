@@ -17,6 +17,9 @@ var config = {
   // 添加到 html head 中的信息
   site_headers: [
     '<meta name="author" content="EDP@TAOBAO" />'
+	],
+	site_headers_react: [
+    'EDP@TAOBAO'
   ],
   site_logo: '/public/images/cnodejs_light.svg', // default is `name`
   site_icon: '/public/images/cnode_icon_32.png', // 默认没有 favicon, 这里填写网址
@@ -66,11 +69,11 @@ var config = {
 
   // 邮箱配置
   mail_opts: {
-    host: 'smtp.126.com',
+    host: 'smtp.qq.com',
     port: 25,
     auth: {
-      user: 'club@126.com',
-      pass: 'club'
+      user: '863165094@qq.com',
+      pass: 'tgtlezvanceabfjf'
     },
     ignoreTLS: true,
   },

@@ -7,7 +7,7 @@ const Header = (props) => {
 
 	const handleKeyDown = (e) => {
 		if(e.keyCode === 13) {
-			window.open(`https://www.google.com.hk/#hl=zh-CN&q=site:cnodejs.org${inputSearchRef.current.value}`)
+			window.open(`https://www.google.com.hk/#hl=zh-CN&q=site:cnodejs.org ${inputSearchRef.current.value}`)
     }
 	}
 

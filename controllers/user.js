@@ -24,7 +24,7 @@ exports.index = function (req, res, next) {
       res.render404('这个用户不存在。');
       return;
     }
-		user = tools.formatMongooseObject(user)
+		// user = tools.formatMongooseObject(user)
     var render = function (recent_topics, recent_replies) {
       user.url = (function () {
         if (user.url && user.url.indexOf('http') !== 0) {
@@ -199,7 +199,7 @@ exports.listCollectedTopics = function (req, res, next) {
     if (err || !user) {
       return next(err);
 		}
-		user = tools.formatMongooseObject(user)
+		// user = tools.formatMongooseObject(user)
     var pages = Math.ceil(user.collect_topic_count/limit);
     var render = function (topics) {
       res.render('user/collect_topics', {
@@ -257,7 +257,7 @@ exports.listTopics = function (req, res, next) {
       res.render404('这个用户不存在。');
       return;
     }
-		user = tools.formatMongooseObject(user)
+		// user = tools.formatMongooseObject(user)
     var render = function (topics, pages) {
       res.render('user/topics', {
         user: user,
@@ -292,7 +292,7 @@ exports.listReplies = function (req, res, next) {
       res.render404('这个用户不存在。');
       return;
     }
-		user = tools.formatMongooseObject(user)
+		// user = tools.formatMongooseObject(user)
     var render = function (topics, pages) {
       res.render('user/replies', {
         user: user,
@@ -341,7 +341,7 @@ exports.block = function (req, res, next) {
     if (!user) {
       return next(new Error('user is not exists'));
 		}
-		user = tools.formatMongooseObject(user)
+		// user = tools.formatMongooseObject(user)
     if (action === 'set_block') {
       ep.all('block_user',
         function (user) {
@@ -370,7 +370,7 @@ exports.deleteAll = function (req, res, next) {
     if (!user) {
       return next(new Error('user is not exists'));
 		}
-		user = tools.formatMongooseObject(user)
+		// user = tools.formatMongooseObject(user)
     ep.all('del_topics', 'del_replys', 'del_ups',
       function () {
         res.json({status: 'success'});

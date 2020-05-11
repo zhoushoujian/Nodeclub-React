@@ -171,10 +171,10 @@ var create = function (req, res, next) {
       });
     });
     UserProxy.getUserById(req.user.id, proxy.done(function (user) {
-			user = tools.formatMongooseObject(user)
+			// user = tools.formatMongooseObject(user)
       user.score += 5;
       user.topic_count += 1;
-      user.modelUser.save();
+      user.save();
       req.user = user;
       proxy.emit('score_saved');
     }));

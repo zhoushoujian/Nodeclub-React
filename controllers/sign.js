@@ -138,7 +138,7 @@ exports.login = function (req, res, next) {
     if (!user) {
       return ep.emit('login_error');
 		}
-		user = tools.formatMongooseObject(user)
+		// user = tools.formatMongooseObject(user)
     var passhash = user.pass;
     tools.bcompare(pass, passhash, ep.done(function (bool) {
       if (!bool) {

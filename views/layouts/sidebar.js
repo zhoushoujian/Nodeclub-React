@@ -47,18 +47,18 @@ const SideBar = (props) => {
 			}
 			{ (!current_user || !current_user.isAdvanced) && <Ads /> }
 			{
-				need_author_other_topic && <div class="panel">
-					<div class='header'>
-      			<span class='col_fade'>作者其它话题</span>
+				need_author_other_topic && <div className="panel">
+					<div className='header'>
+      			<span className='col_fade'>作者其它话题</span>
     			</div>
-    			<div class='inner'>
+    			<div className='inner'>
 						{
 							typeof(author_other_topics) !== 'undefined' && (author_other_topics.length > 0)
-							?	<ul class='unstyled'>
+							?	<ul className='unstyled'>
 									{
 										author_other_topics.map(((topic, index) => (
 											<li key={index}>
-												<div><a class='dark topic_title' href={`/topic/${topic._id}`} title={`topic.title`}>{topic.title}</a>
+												<div><a className='dark topic_title' href={`/topic/${topic._id}`} title={`topic.title`}>{topic.title}</a>
 												</div>
 											</li>
 										)))

@@ -31,27 +31,33 @@ const UserCard = (props) => {
 		}
 	}, [])
 
-    return (
-			<div className='user_card'>
-  			<div>
-    			<a className='user_avatar' href={`/user/${current_user.loginname}`}>
-      			<img src={current_user.avatar} title={current_user.loginname} />
-    			</a>
-    			<span className='user_name'>
-						<a className='dark' href={`/user/${current_user.loginname}`}>{current_user.loginname}</a>
-					</span>
-    			<div className='board clearfix'>
-      			<div className='floor'>
-        			<span className='big'>积分: {current_user.score} </span>
-      			</div>
+	const escapeSignature = (signature) => {
+		return signature.split('\n').map(function (p) {
+			return _.escape(p);
+		}).join('<br>');
+	}
+
+  return (
+		<div className='user_card'>
+  		<div>
+  			<a className='user_avatar' href={`/user/${current_user.loginname}`}>
+    			<img src={current_user.avatar} title={current_user.loginname} />
+  			</a>
+  			<span className='user_name'>
+					<a className='dark' href={`/user/${current_user.loginname}`}>{current_user.loginname}</a>
+				</span>
+  			<div className='board clearfix'>
+    			<div className='floor'>
+      			<span className='big'>积分: {current_user.score} </span>
     			</div>
-    			<div className="space clearfix"></div>
-    			<span className="signature">
-						{current_user.signature ?	escapeSignature(current_user.signature) : ' “这家伙很懒，什么个性签名都没有留下。“'}
-    			</span>
   			</div>
-			</div>
-    );
+  			<div className="space clearfix"></div>
+  			<span className="signature">
+					{current_user.signature ?	escapeSignature(current_user.signature) : ' “这家伙很懒，什么个性签名都没有留下。“'}
+  			</span>
+  		</div>
+		</div>
+  );
 };
 
 export default UserCard

@@ -6,6 +6,16 @@ import "../theme/less/index.less"
 
 const Index = (props) => {
 	const {data: { tabs=[], tab="all", topics, pages, current_page, no_reply_topics, tops }, locals: { current_user }, user} = props
+
+	const base = "/"
+	const base_url = base + (base.indexOf('?') < 0 ? '?' : '&') + 'tab=' + (typeof tab !== 'undefined' ? tab : '') + '&page='
+	const page_start = current_page - 2 > 0 ? current_page - 2 : 1;
+	const page_end = page_start + 4 >= pages ? pages : page_start + 4;
+	const arr = []
+	for(var i = page_start; i <= page_end; i++) {
+		arr.push(i)
+	}
+
 	return(
 		<div id="main">
 			<Meta />
@@ -21,8 +31,25 @@ const Index = (props) => {
           {
             typeof(topics) !== 'undefined' && topics.length > 0
             ? <div className="inner no-padding">
-								{ topics.map((topic, index) => <TopicList key={index} tab={tab} topic={topic} pages={pages} current_page={current_page} base="/" />) }
-              </div>
+								{ topics.map((topic, index) => <TopicList key={index} tab={tab} topic={topic} />) }
+								<div className='pagination' current_page={current_page}>
+									<ul>
+										{ current_page == 1 ?  <li className='disabled'><a>«</a></li> : <li><a href={base_url}>«</a></li> }
+										{ (page_start > 1) && <li><a>...</a></li> }
+										{
+											arr.map((item, index) => {
+												if (item === current_page){
+													return (<li key={index} className='disabled'><a>{item}</a></li>)
+												} else {
+													return (<li key={index}><a href={base_url + item}>{item}</a></li>)
+												}
+											})
+										}
+										{ (page_end < pages ) &&  <li><a>...</a></li> }
+										{ (current_page == pages) ? <li className='disabled'><a>»</a></li> : <li><a href={base_url + pages}>»</a></li> }
+  								</ul>
+								</div>
+							</div>
             : <div className="inner">
                 <p>无话题</p>
               </div>

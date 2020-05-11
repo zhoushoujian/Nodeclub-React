@@ -8,11 +8,12 @@ exports.index = function (req, res, next) {
   ep.fail(next);
 
   ep.all('has_read_messages', 'hasnot_read_messages', function (has_read_messages, hasnot_read_messages) {
-		res.data={
-			has_read_messages: has_read_messages,
-			hasnot_read_messages: hasnot_read_messages
-		}
-		return renderAndSend(req, res, '/messageIndex', req.query)
+		res.render('message/index', {has_read_messages: has_read_messages, hasnot_read_messages: hasnot_read_messages});
+		// res.data={
+		// 	has_read_messages: has_read_messages,
+		// 	hasnot_read_messages: hasnot_read_messages
+		// }
+		// return renderAndSend(req, res, '/messageIndex', req.query)
   });
 
   ep.all('has_read', 'unread', function (has_read, unread) {

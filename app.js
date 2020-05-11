@@ -55,12 +55,12 @@ client.prepare().then(() => {
   var assets = {};
 
   if (config.mini_assets) {
-  try {
-    assets = require('./assets.json');
-  } catch (e) {
-    logger.error('You must execute `make build` before start app when mini_assets is true.');
-    throw e;
-  }
+  	try {
+  		assets = require('./assets.json');
+  	} catch (e) {
+  		logger.error('You must execute `make build` before start app when mini_assets is true.');
+  		throw e;
+  	}
   }
 
   var urlinfo = require('url').parse(config.host);
@@ -169,17 +169,8 @@ client.prepare().then(() => {
   });
 
   // routes
-  app.use('/api/v1', cors(), apiRouterV1);
-  // app.get('/a', (req, res) => {
-  //   return res.client.render(req, res, '/a', req.query)
-  // })
-  // app.get('/b', (req, res) => {
-  //   return res.client.render(req, res, '/b', req.query)
-  // })
-  app.get('/main', (req, res) => {
-    res.data = "data";
-    return res.client.render(req, res, '/main', req.query)
-	})
+	app.use('/api/v1', cors(), apiRouterV1);
+
 	app.get('/_next/*', (req, res) => {
 		return handle(req, res)
 })

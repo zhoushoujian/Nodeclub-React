@@ -12,7 +12,7 @@ var at         = require('../common/at');
  */
 exports.getReply = function (id, callback) {
   Reply.findOne({_id: id}, (err, results) => {
-		results = tools.formatMongooseObject(results)
+		// results = tools.formatMongooseObject(results)
 		return callback(err, results)
 	});
 };
@@ -33,7 +33,7 @@ exports.getReplyById = function (id, callback) {
     if (err) {
       return callback(err);
 		}
-		reply = tools.formatMongooseObject(reply)
+		// reply = tools.formatMongooseObject(reply)
     if (!reply) {
       return callback(err, null);
     }
@@ -72,7 +72,7 @@ exports.getRepliesByTopicId = function (id, cb) {
     if (err) {
       return cb(err);
 		}
-		replies = tools.formatMongooseObject(replies)
+		// replies = tools.formatMongooseObject(replies)
     if (replies.length === 0) {
       return cb(null, []);
     }
@@ -138,7 +138,7 @@ exports.newAndSave = function (content, topicId, authorId, replyId, callback) {
  */
 exports.getLastReplyByTopId = function (topicId, callback) {
   Reply.find({topic_id: topicId, deleted: false}, '_id', {sort: {create_at : -1}, limit : 1}, (err, results) => {
-		results = tools.formatMongooseObject(results)
+		// results = tools.formatMongooseObject(results)
 		return callback(err, results)
 	});
 };
@@ -149,7 +149,7 @@ exports.getRepliesByAuthorId = function (authorId, opt, callback) {
     opt      = null;
   }
   Reply.find({author_id: authorId}, {}, opt, (err, results) => {
-		results = tools.formatMongooseObject(results)
+		// results = tools.formatMongooseObject(results)
 		return callback(err, results)
 	});
 };

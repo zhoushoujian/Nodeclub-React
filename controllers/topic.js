@@ -44,24 +44,31 @@ exports.index = function (req, res, next) {
   }
   var events = ['topic', 'other_topics', 'no_reply_topics', 'is_collect'];
   var ep = EventProxy.create(events, function (topic, other_topics, no_reply_topics, is_collect) {
-		const author = tools.formatMongooseObject(topic.author)
-		const topicObject = tools.formatMongooseObject(topic)
-		topicObject.author = author
-		topicObject.tabName = tabName(topicObject.tab)
-		topicObject._id = JSON.stringify(topicObject._id)
-		res.data = {
-      topic: topicObject,
+		res.render('topic/index', {
+      topic: topic,
       author_other_topics: other_topics,
       no_reply_topics: no_reply_topics,
       is_uped: isUped,
       is_collect: is_collect,
-		}
-		if(res.data.topic){
-			if(res.data.topic.create_at) res.data.topic.create_at = tools.formatDate(res.data.topic.create_at, true)
-			if(res.data.topic.last_reply_at) res.data.topic.last_reply_at = tools.formatDate(res.data.topic.last_reply_at, true)
-			if(res.data.topic.update_at) res.data.topic.update_at = tools.formatDate(res.data.topic.update_at, true)
-		}
-		return tools.renderAndSend(req, res, '/topicIndex', req.query)
+    });
+		// const author = tools.formatMongooseObject(topic.author)
+		// const topicObject = tools.formatMongooseObject(topic)
+		// topicObject.author = author
+		// topicObject.tabName = tabName(topicObject.tab)
+		// topicObject._id = JSON.stringify(topicObject._id)
+		// res.data = {
+    //   topic: topicObject,
+    //   author_other_topics: other_topics,
+    //   no_reply_topics: no_reply_topics,
+    //   is_uped: isUped,
+    //   is_collect: is_collect,
+		// }
+		// if(res.data.topic){
+		// 	if(res.data.topic.create_at) res.data.topic.create_at = tools.formatDate(res.data.topic.create_at, true)
+		// 	if(res.data.topic.last_reply_at) res.data.topic.last_reply_at = tools.formatDate(res.data.topic.last_reply_at, true)
+		// 	if(res.data.topic.update_at) res.data.topic.update_at = tools.formatDate(res.data.topic.update_at, true)
+		// }
+		// return tools.renderAndSend(req, res, '/topicIndex', req.query)
   });
 
   ep.fail(next);
@@ -176,7 +183,7 @@ exports.put = function (req, res, next) {
     User.getUserById(req.session.user._id, proxy.done(function (user) {
       user.score += 5;
       user.topic_count += 1;
-			user.modelUser.save();
+			user.save();
       req.session.user = user;
       proxy.emit('score_saved');
     }));
@@ -410,7 +417,7 @@ exports.collect = function (req, res, next) {
           return next(err);
         }
         user.collect_topic_count += 1;
-        user.modelUser.save();
+        user.save();
       });
 
       req.session.user.collect_topic_count += 1;
@@ -443,7 +450,7 @@ exports.de_collect = function (req, res, next) {
         }
         user.collect_topic_count -= 1;
         req.session.user = user;
-        user.modelUser.save();
+        user.save();
       });
 
       topic.collect_count -= 1;

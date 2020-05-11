@@ -18,7 +18,7 @@ var xmlbuilder   = require('xmlbuilder');
 var renderHelper = require('../common/render_helper');
 var _            = require('lodash');
 var moment = require('moment');
-const { renderAndSend, formatDate } = require("../common/tools")
+const { renderAndSend, formatDate, formatMongooseObject } = require("../common/tools")
 
 exports.index = function (req, res, next) {
   var page = parseInt(req.query.page, 10) || 1;
@@ -101,6 +101,7 @@ exports.index = function (req, res, next) {
   var tabName = renderHelper.tabName(tab);
   proxy.all('topics', 'tops', 'no_reply_topics', 'pages',
     function (topics, tops, no_reply_topics, pages) {
+			no_reply_topics = formatMongooseObject(no_reply_topics)
       res.data = {
         topics: topics,
         current_page: page,
@@ -113,11 +114,33 @@ exports.index = function (req, res, next) {
         pageTitle: tabName && (tabName + '版块'),
 			};
 			if(res.data.topics && Array.isArray(res.data.topics)){
-				res.data.topics.forEach(item => {
-					if(item.last_reply_at) item.last_reply_at = formatDate(item.last_reply_at, true)
-					if(item.create_at) item.create_at = formatDate(item.create_at, true)
-					if(item.update_at) item.update_at = formatDate(item.update_at, true)
-					if(item.author && item.author.create_at) item.author.create_at = formatDate(item.author.create_at, true)
+				const modelArr = []
+				res.data.topics.forEach(async (item) => {
+					const last_reply_at = formatDate(item.last_reply_at, true)
+					const create_at = formatDate(item.create_at, true)
+					const update_at = formatDate(item.update_at, true)
+					let author_create_at, reply_author, reply_last_reply_at
+					if(item.author && item.author.create_at) author_create_at = formatDate(item.author.create_at, true)
+					if(item.reply) {
+						reply_author = formatMongooseObject(item.author)
+						reply_last_reply_at = formatDate(item.reply.update_at, true)
+					}
+					const author = formatMongooseObject(item.author)
+					const reply = formatMongooseObject(item.reply)
+					modelArr.push([last_reply_at, create_at, update_at, author_create_at, author, reply, reply_author, reply_last_reply_at])
+				})
+				res.data.topics = formatMongooseObject(res.data.topics)
+				res.data.topics.forEach((item, index) => {
+					item.last_reply_at = modelArr[index][0]
+					item.create_at = modelArr[index][1]
+					item.update_at = modelArr[index][2]
+					item.author_create_at = modelArr[index][3]
+					item.author = modelArr[index][4]
+					item.reply = modelArr[index][5]
+					if(item.reply) {
+						item.reply.author = modelArr[index][6]
+						item.reply.last_reply_at = modelArr[index][7]
+					}
 				})
 			}
       return renderAndSend(req, res, '/index', req.query)

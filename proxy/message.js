@@ -36,7 +36,7 @@ exports.getMessageById = function (id, callback) {
     if (err) {
       return callback(err);
 		}
-		message = tools.formatMongooseObject(message)
+		// message = tools.formatMongooseObject(message)
     getMessageRelations(message, callback);
   });
 };
@@ -73,7 +73,7 @@ var getMessageRelations = exports.getMessageRelations = function (message, callb
 exports.getReadMessagesByUserId = function (userId, callback) {
   Message.find({master_id: userId, has_read: true}, null,
     {sort: '-create_at', limit: 20}, (err, results) => {
-			results = tools.formatMongooseObject(results)
+			// results = tools.formatMongooseObject(results)
 			return callback(err, results)
 		});
 };
@@ -89,7 +89,7 @@ exports.getReadMessagesByUserId = function (userId, callback) {
 exports.getUnreadMessageByUserId = function (userId, callback) {
   Message.find({master_id: userId, has_read: false}, null,
     {sort: '-create_at'}, (err, results) => {
-			results = tools.formatMongooseObject(results)
+			// results = tools.formatMongooseObject(results)
 			return callback(err, results)
 		});
 };

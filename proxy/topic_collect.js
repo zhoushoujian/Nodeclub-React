@@ -4,7 +4,7 @@ var tools = require('../common/tools');
 
 exports.getTopicCollect = function (userId, topicId, callback) {
   TopicCollect.findOne({user_id: userId, topic_id: topicId}, (err, results) => {
-		results = tools.formatMongooseObject(results)
+		// results = tools.formatMongooseObject(results)
 		return callback(err, results)
 	});
 };
@@ -13,7 +13,7 @@ exports.getTopicCollectsByUserId = function (userId, opt, callback) {
   var defaultOpt = {sort: '-create_at'};
   opt = _.assign(defaultOpt, opt)
   TopicCollect.find({user_id: userId}, '', opt, (err, results) => {
-		results = tools.formatMongooseObject(results)
+		// results = tools.formatMongooseObject(results)
 		return callback(err, results)
 	});
 };

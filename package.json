@@ -84,7 +84,9 @@
   },
   "scripts": {
     "start": "node app",
-    "test": "make test",
+		"test": "make test",
+		"install": "npm install",
+		"build": "./node_modules/loader-builder/bin/builder views .",
     "buildNext": "cd views && rm -rf .next/* && next build"
   }
 }
