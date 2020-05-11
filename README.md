@@ -13,7 +13,7 @@ Nodeclub - React是fork自 [Nodeclub(https://github.com/cnodejs/nodeclub/)](http
   
 原项目采用的技术栈：```Nodejs```, ```Express```, ```Mongodb```, ```Redis```, ```ejs```和```less```，典型的MVC架构  
 
-本仓库采用的技术栈：```Nodejs```, ```Express```, ```Mongodb```,```Redis```,```React```,```Redux```,```nextjs```,```webpack```和```less```  
+本仓库采用的技术栈：```Nodejs```, ```Express```, ```Mongodb```, ```Redis```, ```React```, ```Redux```, ```nextjs```, ```webpack```和```less```  
   
 由于时间和精力，本仓库只React化了社区主页和所有导航导航页面，可以使用github快捷登录，但不能注册邮箱登录。  
   
