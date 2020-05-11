@@ -73,7 +73,7 @@ var config = {
     port: 25,
     auth: {
       user: '863165094@qq.com',
-      pass: 'tgtlezvanceabfjf'
+      pass: 'your_password'
     },
     ignoreTLS: true,
   },
@@ -87,8 +87,8 @@ var config = {
 
   // github 登陆的配置
   GITHUB_OAUTH: {
-    clientID: 'Iv1.0b80818676702493',
-    clientSecret: '72bbc87e6aab81e597b1198b97fcf838cc131c38',
+    clientID: 'your_client_id',
+    clientSecret: 'your_client_secret',
     callbackURL: 'http://localhost:3000/auth/github/callback'
   },
   // 是否允许直接注册（否则只能走 github 的方式）

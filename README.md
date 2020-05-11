@@ -42,6 +42,7 @@ Nodeclub - React是fork自 [Nodeclub(https://github.com/cnodejs/nodeclub/)](http
 2. 我平时使用的mongodb服务器启动命令： mongod --dbpath /Users/admin/Documents/project/cordova_project/view/db --port=27017
 3. 我平时使用的redis服务器启动命令： /Users/admin/Documents/project/redis-4.0.9/src/redis-server
 4. 上面两条只是本地调试使用的命令，勿用于生产环境
+5. 不要忘记在mongodb的新建一个文档,默认文档名称为node_club_dev,可在config.js里修改
 
 ## 测试
 
