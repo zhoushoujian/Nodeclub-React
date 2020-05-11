@@ -3,13 +3,13 @@ Nodeclub - React
 
 ## 介绍
 
-Nodeclub - React是fork自 [Nodeclub(https://github.com/cnodejs/nodeclub/)] 的项目，  
+Nodeclub - React是fork自 [Nodeclub(https://github.com/cnodejs/nodeclub/)](https://github.com/cnodejs/nodeclub/) 的项目，  
   
 由于原项目的前端使用的是ejs，没有用到三大框架。  
   
 所以本仓库特意用react重构前端界面，考虑到社区需要服务端渲染和管理全局数据，所以使用了nextjs和redux。  
   
-需要纯净的nextjs框架的同学请戳[这里(https://github.com/zhoushoujian/nextjs)]  
+需要纯净的nextjs框架的同学请戳[这里](https://github.com/zhoushoujian/nextjs)  
   
 原项目采用的技术栈：```Nodejs```, ```Express```, ```Mongodb```, ````Redis```, ```ejs```和```less```，典型的MVC架构  
 本仓库采用的技术栈：```Nodejs```, ```Express```, ```Mongodb```,````Redis```,```React```,```Redux```,```nextjs```,```webpack```和```less```  
