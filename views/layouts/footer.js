@@ -53,7 +53,9 @@ const Footer = () => {
     				<div className="links">
       				<a className='dark' href='/rss'>RSS</a>
       				{` | `}
-      				<a className='dark' href='https://github.com/cnodejs/nodeclub/'>源码地址</a>
+      				<a className='dark' href='https://github.com/zhoushoujian/Nodeclub-React'>源码地址</a>
+							{` | `}
+							<a className='dark' href='https://github.com/cnodejs/nodeclub/'>原项目地址</a>
     				</div>
 						<Sponsors />
 					</div>

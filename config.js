@@ -10,7 +10,7 @@ var config = {
 
   get mini_assets() { return !this.debug; }, // 是否启用静态文件的合并压缩，详见视图中的Loader
 
-  name: 'Nodeclub', // 社区名字
+  name: 'Nodeclub - React', // 社区名字
   description: 'CNode：Node.js专业中文社区', // 社区的描述
   keywords: 'nodejs, node, express, connect, socket.io',
 
@@ -31,7 +31,7 @@ var config = {
   // cdn host，如 http://cnodejs.qiniudn.com
   site_static_host: '', // 静态文件存储域名
   // 社区的域名
-  host: 'localhost',
+  host: '192.144.213.72',
   // 默认的Google tracker ID，自有站点请修改，申请地址：http://www.google.com/analytics/
   google_tracker_id: '',
   // 默认的cnzz tracker ID，自有站点请修改
@@ -50,7 +50,7 @@ var config = {
   auth_cookie_name: 'node_club',
 
   // 程序运行的端口
-  port: 3000,
+  port: 3333,
 
   // 话题列表显示的话题数量
   list_topic_count: 20,

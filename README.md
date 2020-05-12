@@ -30,31 +30,20 @@ Nodeclub - React是fork自 [Nodeclub(https://github.com/cnodejs/nodeclub/)](http
 1. 安装 `Node.js[必须]` `MongoDB[必须]` `Redis[必须]`
 2. 启动 MongoDB 和 Redis
 3. `$ npm install` 安装 Nodeclub - React 的依赖包
-4. `cp config.default.js config.js` 请根据需要修改配置文件
-5. `$ make test` 确保各项服务都正常
-6. `$ npm run start`
-7. visit `http://localhost:3000`
-8. done!
+4. `$ make test` 确保各项服务都正常
+5. `$ npm run start`
+6. visit `http://localhost:3333`
+7. done!
 ```
+
+## 体验地址
+http://192.144.213.72:3333/  
 
 ## 一点小提示
 1. 使用windows的同学用不了make命令
 2. 我平时使用的mongodb服务器启动命令： mongod --dbpath /Users/admin/Documents/project/cordova_project/view/db --port=27017
 3. 我平时使用的redis服务器启动命令： /Users/admin/Documents/project/redis-4.0.9/src/redis-server
 4. 上面两条只是本地调试使用的命令，勿用于生产环境
-5. 不要忘记在mongodb的新建一个文档,默认文档名称为node_club_dev,可在config.js里修改
-
-## 测试
-
-跑测试
-
-```bash
-$ make test
-```
-
-## 最后必须吐槽一下
-Nodeclub项目使用了mongoose，并且大量使用没有转为javascript的model对象。我们知道，model对象是不能在网络中直接用于数据交互的，必须转为js对象才可以
-
 
 ## License
 
