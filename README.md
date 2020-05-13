@@ -17,7 +17,7 @@ Nodeclub - React是fork自 [Nodeclub(https://github.com/cnodejs/nodeclub/)](http
   
 由于时间和精力，本仓库只React化了社区主页和所有导航导航页面，可以使用github快捷登录，但不能注册邮箱登录。  
   
-本仓库仅用作技术交流，如同学有兴趣，欢迎加入一起happy哈。  
+本仓库仅用作技术交流，有兴趣的同学，欢迎加入一起happy哈(我的邮箱：qianchengyimeng@qq.com)。  
   
 引用原仓库的一句话：  
 ````Nodeclub是使用 **Node.js** 和 **MongoDB** 开发的社区系统，界面优雅，功能丰富，小巧迅速，已在Node.js 中文技术社区 [CNode(http://cnodejs.org)](http://cnodejs.org) 得到应用，但你完全可以用它搭建自己的社区。````  
