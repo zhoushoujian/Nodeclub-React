@@ -44,6 +44,7 @@ http://192.144.213.72:3333/
 2. 我平时使用的mongodb服务器启动命令： mongod --dbpath /Users/admin/Documents/project/cordova_project/view/db --port=27017
 3. 我平时使用的redis服务器启动命令： /Users/admin/Documents/project/redis-4.0.9/src/redis-server
 4. 上面两条只是本地调试使用的命令，勿用于生产环境
+5. 装不起包的可以尝试使用这里的：http://192.144.213.72:9527/
 
 ## License
 
