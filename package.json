@@ -43,7 +43,7 @@
     "moment": "2.15.2",
     "mongoose": "5.3.8",
     "multiline": "1.0.2",
-    "next": "latest",
+    "next": "9.1.4",
     "next-compose-plugins": "^2.2.0",
     "node-uuid": "1.4.7",
     "nodemailer": "2.3.0",
@@ -83,10 +83,11 @@
     "supertest": "1.2.0"
   },
   "scripts": {
-    "start": "node app",
-		"test": "make test",
-		"install": "npm install",
-		"build": "./node_modules/loader-builder/bin/builder views . && npm run buildNext",
-    "buildNext": "cd views && rm -rf .next/* && next build"
+		"start": "cross-env NODE_ENV=production node app",
+		"dev": "node app",
+    "test": "make test",
+    "install": "npm install",
+    "build": "./node_modules/loader-builder/bin/builder views . && npm run buildNext",
+    "buildNext": "cd views && rm -rf _next/* && next build"
   }
 }

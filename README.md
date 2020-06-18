@@ -32,12 +32,12 @@ Nodeclub - React是fork自 [Nodeclub(https://github.com/cnodejs/nodeclub/)](http
 3. `$ npm install` 安装 Nodeclub - React 的依赖包
 4. `$ make test` 确保各项服务都正常
 5. `$ npm run start`
-6. visit `http://localhost:3333`
+6. visit `http://localhost:3334`
 7. done!
 ```
 
 ## 体验地址
-http://192.144.213.72:3333/  
+http://192.144.213.72:3334/  
 
 ## 一点小提示
 1. 使用windows的同学用不了make命令

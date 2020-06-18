@@ -50,7 +50,7 @@ var config = {
   auth_cookie_name: 'node_club',
 
   // 程序运行的端口
-  port: 3333,
+  port: 3334,
 
   // 话题列表显示的话题数量
   list_topic_count: 20,
@@ -89,7 +89,7 @@ var config = {
   GITHUB_OAUTH: {
     clientID: 'your_client_id',
     clientSecret: 'your_client_secret',
-    callbackURL: 'http://localhost:3000/auth/github/callback'
+    callbackURL: 'http://localhost:3334/auth/github/callback'
   },
   // 是否允许直接注册（否则只能走 github 的方式）
   allow_sign_up: true,
