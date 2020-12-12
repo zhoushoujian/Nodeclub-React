@@ -10,7 +10,7 @@ import createStore from '../store';
 const isServer = typeof window === 'undefined';
 if (isServer) {
     // not print in back end, such as in vscode
-    console.log = () => {};
+    console.log = () => { };
 }
 
 if (!global.window) global.window = global;
@@ -40,14 +40,14 @@ class MyApp extends App {
 
     constructor(props) {
         super(props);
-				const { data = {}, locals={} } = props.pageProps;
-				console.log("props.pageProps", props.pageProps)
+        const { data = {}, locals = {} } = props.pageProps;
+        console.log("props.pageProps", props.pageProps)
         this.store = getOrCreateStore({
-						data,
-						locals
-				})
-				window.$getState = this.store.getState
-				window.$dispatch = this.store.dispatch
+            data,
+            locals
+        })
+        window.$getState = this.store.getState
+        window.$dispatch = this.store.dispatch
     }
 
     componentDidCatch(e, info) {

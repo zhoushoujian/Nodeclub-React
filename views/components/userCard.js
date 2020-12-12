@@ -4,7 +4,7 @@ const UserCard = (props) => {
 	const { current_user, csrf } = props
 
 	useEffect(() => {
-		if(current_user){
+		if (current_user) {
 			$(document).ready(function () {
 				$('.follow_btn').click(function () {
 					var $me = $(this);
@@ -37,27 +37,27 @@ const UserCard = (props) => {
 		}).join('<br>');
 	}
 
-  return (
+	return (
 		<div className='user_card'>
-  		<div>
-  			<a className='user_avatar' href={`/user/${current_user.loginname}`}>
-    			<img src={current_user.avatar} title={current_user.loginname} />
-  			</a>
-  			<span className='user_name'>
+			<div>
+				<a className='user_avatar' href={`/user/${current_user.loginname}`}>
+					<img src={current_user.avatar} title={current_user.loginname} />
+				</a>
+				<span className='user_name'>
 					<a className='dark' href={`/user/${current_user.loginname}`}>{current_user.loginname}</a>
 				</span>
-  			<div className='board clearfix'>
-    			<div className='floor'>
-      			<span className='big'>积分: {current_user.score} </span>
-    			</div>
-  			</div>
-  			<div className="space clearfix"></div>
-  			<span className="signature">
-					{current_user.signature ?	escapeSignature(current_user.signature) : ' “这家伙很懒，什么个性签名都没有留下。“'}
-  			</span>
-  		</div>
+				<div className='board clearfix'>
+					<div className='floor'>
+						<span className='big'>积分: {current_user.score} </span>
+					</div>
+				</div>
+				<div className="space clearfix"></div>
+				<span className="signature">
+					{current_user.signature ? escapeSignature(current_user.signature) : ' “这家伙很懒，什么个性签名都没有留下。“'}
+				</span>
+			</div>
 		</div>
-  );
+	);
 };
 
 export default UserCard

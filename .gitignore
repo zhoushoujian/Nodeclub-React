@@ -31,3 +31,4 @@ public/upload/*
 package-lock.json
 .next
 _next
+db/*

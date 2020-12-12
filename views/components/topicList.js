@@ -21,11 +21,11 @@ const TopicList = (props) => {
 		});
 	}, [])
 
-  return (
-			<div id="topic_list">
-				<TopAbstract topic={topic} tab={tab} />
-			</div>
-  );
+	return (
+		<div id="topic_list">
+			<TopAbstract topic={topic} tab={tab} />
+		</div>
+	);
 };
 
 export default TopicList
