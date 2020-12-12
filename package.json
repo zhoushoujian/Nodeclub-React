@@ -50,7 +50,7 @@
     "log4js": "^0.6.29",
     "markdown-it": "6.0.0",
     "memory-cache": "0.1.4",
-    "method-override": "2.3.5",
+    "method-override": "3.0.0",
     "moment": "2.15.2",
     "mongoose": "5.3.8",
     "multiline": "1.0.2",
