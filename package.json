@@ -21,7 +21,7 @@
     "@zeit/next-less": "^1.0.1",
     "@zeit/next-sass": "^1.0.1",
     "async": "1.5.2",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "babel-plugin-transform-remove-console": "^6.9.4",
     "bcryptjs": "2.3.0",
     "body-parser": "1.17.1",
